@@ -1,14 +1,12 @@
-package com.example.demo.entity;
+package com.example.demo.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "transaction")
 public class Transaction {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idtransaction", nullable = false)
     private Integer id;
 
@@ -32,6 +30,14 @@ public class Transaction {
 
     @Column(name = "currency", nullable = false, length = 45)
     private String currency;
+
+    @ManyToOne
+    @JoinColumn(name = "user_iduser")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "wallet_from")
+    private Wallet wallet;
 
     public Integer getId() {
         return id;

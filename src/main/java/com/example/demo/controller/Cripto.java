@@ -1,12 +1,15 @@
 package com.example.demo.controller;
 
 import com.example.demo.Repository.*;
-import com.example.demo.entity.Transaction;
+import com.example.demo.Entity.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -14,7 +17,8 @@ import java.util.List;
 @RequestMapping(value = "cripto")
 public class Cripto {
 
-    @Autowired CurrencyRepository currencyRepository;
+    @Autowired
+    CurrencyRepository currencyRepository;
     @Autowired
     UserRepository userRepository;
     @Autowired
@@ -27,8 +31,22 @@ public class Cripto {
 
     @GetMapping(value = "list_transactions")
     public String listar(Model model){
-        List<Transaction> transactionList = transactionRepository.findAll();
-        model.addAttribute("transactonList",transactionList);
+
+        model.addAttribute("transactonList",transactionRepository.findAll());
         return "cripto/list_transactions";
+    }
+
+    @GetMapping("/new")
+    public String nuevaTransaccion(Model model, @RequestParam("id") int id_usuario) {
+        model.addAttribute("listaDivisas", currencyRepository.findAll());
+        model.addAttribute("listaBilleteras", walletRepository.findAll());
+        model.addAttribute("id_usuario", id_usuario);
+        return "cripto/newFrm";
+    }
+
+    @PostMapping("/save")
+    public String guardarTransaccion(Transaction transaction, RedirectAttributes attr) {
+        transactionRepository.save(transaction);
+        return "redirect:/cripto/principal";
     }
 }

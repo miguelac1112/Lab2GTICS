@@ -10,46 +10,47 @@
         <main>
             <div class="container px-4 py-5 col-lg-4 offset-lg-4">
                 <h1 class="pb-2 mb-3 border-bottom">Nuevo Producto</h1>
-                <form method="post" th:action="@{'/product/save'}" class="mt-2">
+                <form method="post" th:action="@{'/cripto/save'}" class="mt-2">
+                    <input th:value="${id_usuario}" name="user" type="hidden"/>
                     <div class="mb-3">
-                        <label for="productname" class="form-label">Descripción de la Tx</label>
-                        <input type="text" class="form-control" name="productname" id="productname">
+                        <label for="description" class="form-label">Descripción de la Tx</label>
+                        <input type="text" class="form-control" name="description" id="description">
                     </div>
                     <div class="mb-3">
-                        <label for="supplier" class="form-label">Criptomoneda</label>
-                        <select id="supplier" class="form-select" name="supplier">
-                            <option th:each="supplier : ${listaProveedores}"
-                                    th:text="${supplier.companyname}"
-                                    th:value="${supplier.id}"></option>
+                        <label for="currency" class="form-label">Criptomoneda</label>
+                        <select id="currency" class="form-select" >
+                            <option th:each="currency : ${listaDivisas}"
+                                    th:text="${currency.name}"
+                                    th:value="${currency.name}"></option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="category" class="form-label">TxID</label>
-                        <select id="category" class="form-select" name="category">
-                            <option th:each="category : ${listaCategorias}"
-                                    th:text="${category.categoryname}"
-                                    th:value="${category.id}">${categatory.name}</option>
+                        <label for="txId" class="form-label">TxID</label>
+                        <input type="text" class="form-control" name="txId" id="txId" max="40">
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Cantidad</label>
+                        <input type="text" class="form-control" name="amount" id="amount">
+                    </div>
+                    <div class="mb-3">
+                        <label for="neetworkFee" class="form-label">Comisión</label>
+                        <input type="text" class="form-control" name="neetworkFee" id="neetworkFee">
+                    </div>
+                    <div class="mb-3">
+                        <label for="block" class="form-label"># Bloque</label>
+                        <input type="number" class="form-control" name="block" id="block">
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Estado</label>
+                        <input type="number" class="form-control" name="status" id="status">
+                    </div>
+                    <div class="mb-3">
+                        <label for="wallet" class="form-label">Billetera</label>
+                        <select id="wallet" class="form-select" name="wallet">
+                            <option th:each="wallet : ${listaBilleteras}"
+                                    th:text="${wallet.address}"
+                                    th:value="${wallet.id}"></option>
                         </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="quantityperunit" class="form-label">Cantidad</label>
-                        <input type="text" class="form-control" name="quantityperunit" id="quantityperunit">
-                    </div>
-                    <div class="mb-3">
-                        <label for="unitprice" class="form-label">Comisión</label>
-                        <input type="text" class="form-control" name="unitprice" id="unitprice">
-                    </div>
-                    <div class="mb-3">
-                        <label for="unitsinstock" class="form-label"># Bloque</label>
-                        <input type="number" class="form-control" name="unitsinstock" id="unitsinstock">
-                    </div>
-                    <div class="mb-3">
-                        <label for="unitsonorder" class="form-label">Estado</label>
-                        <input type="number" class="form-control" name="unitsonorder" id="unitsonorder">
-                    </div>
-                    <div class="mb-3">
-                        <label for="reorderlevel" class="form-label">Billetera</label>
-                        <input type="number" class="form-control" name="reorderlevel" id="reorderlevel">
                     </div>
                     <a th:href="@{'/product'}" class="btn btn-danger">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Registrar</button>

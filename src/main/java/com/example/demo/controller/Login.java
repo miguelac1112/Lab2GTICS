@@ -16,7 +16,7 @@ public class Login {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("")
+    @GetMapping("login")
     public String login(){
         return "login/inicio2";
     }
@@ -27,13 +27,12 @@ public class Login {
         System.out.println(email);
         System.out.println(password);
         List<User> usuario = userRepository.validarCorreoContrasena(email, password);
-        System.out.println(usuario.get(0).getId());
         if (usuario.isEmpty()){
-            return "login/inicio2";
+            return "redirect:/login";
         }else{
             User user = usuario.get(0);
             model.addAttribute("usuario", user);
-            return "cripto/principal";
+            return "redirect:/principal";
         }
     }
 

@@ -6,9 +6,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class Login {
-    @PostMapping("")
+
+    @GetMapping("")
     public String login(){
         return "login/inicio2";
+    }
+
+    @PostMapping(value="login/inicioSesion")
+    public String validaLogin(){
+
+        return "cripto/principal";
     }
 
 }

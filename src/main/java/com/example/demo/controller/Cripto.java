@@ -48,6 +48,6 @@ public class Cripto {
     public String guardarTransaccion(Transaction transaction, RedirectAttributes attr) {
         System.out.println(transaction.getCurrency());
         transactionRepository.save(transaction);
-        return "redirect:/cripto/principal";
+        return "redirect:/principal";
     }
 }

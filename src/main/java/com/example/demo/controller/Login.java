@@ -31,7 +31,7 @@ public class Login {
             return "redirect:/login";
         }else{
             User user = usuario.get(0);
-            model.addAttribute("usuario", user);
+            model.addAttribute("iduser", user.getId());
             return "redirect:/cripto/principal";
         }
     }

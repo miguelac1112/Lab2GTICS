@@ -31,7 +31,6 @@ public class Cripto {
 
     @GetMapping(value = "list_transactions")
     public String listar(Model model){
-
         model.addAttribute("transactonList",transactionRepository.findAll());
         return "cripto/list_transactions";
     }

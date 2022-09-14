@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:tr="http://www.w3.org/1999/xhtml">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -28,55 +29,40 @@
     </style>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-        <div class="container-fluid">
-            <!-- Navbar brand -->
-            <a class="navbar-brand" target="_blank" href="https://mdbootstrap.com/docs/standard/">
-                <i class="bi bi-currency-bitcoin"></i>Telecripto
-            </a>
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
-                    aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarExample01">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="#intro">Mi Billetera</a>
-                    </li>
+
+        <div class="row mt-4">
+            <div class="col-2">
+                <img src="/img/logo.png" alt="Logo" height="150"/>
+            </div>
+            <div class="col-1 mt-5">
+                <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
-                           target="_blank">Transacciones</a>
-                    </li>
-
-                </ul>
-
-                <ul class="navbar-nav d-flex flex-row">
-                    <!-- Icons -->
-                    <li class="nav-item me-3 me-lg-0">
-                        <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
-                           target="_blank">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item me-3 me-lg-0">
-                        <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item me-3 me-lg-0">
-                        <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item me-3 me-lg-0">
-                        <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
+                        <a class="nav-link" >Mi billetera</a>
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
+            <div class="col-2 mt-5">
+
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link ">Transacciones</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-5 mt-5">
+                <input name="numeroTxID" class="form-control me-2 " type="search" placeholder="Buscar transacciones por TxID" aria-label="Search">
+            </div>
+            <div class="col-2 mt-5">
+                <button type="submit" class="btn btn-success">Buscar</button>
+            </div>
+            <!--
+            <div class=" col-4 mt-5">
+                <button type="button ml-3" class="btn btn-success">Inicio sesión</button>
+                <button type="button mr-3" class="btn btn-dark">Cerrar Sesión</button>
+            </div>
+            --></div>
+
     <!-- Navbar -->
 
     <!-- Jumbotron -->
@@ -95,173 +81,22 @@
         <section class="text-center">
             <h4 class="mb-5"><strong>Lista de Cripto</strong></h4>
 
-            <div class="row">
-                <div class="col-lg-4 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
-                            <a href="#!">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
+            <div class="row" th:class="row">
+
+                <div th:each="moneda:${listaCriptos}" class="col-sm-6 mt-4 ml-2 mb-4" >
+                    <div class="card text-center border-white bg-transparent">
                         <div class="card-body">
-                            <h2 class="card-title" th:text="${listaCriptos.get(0).name}"></h2>
-                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(0).getNetwork()}"></h5>
-
-                            <p class="card-text" th:text="${listaCriptos.get(0).getDescription()}">
-                            </p>
-                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(0).getPrice()}+${' (BUSD)'}"></h2>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
-                            <a href="#!">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title" th:text="${listaCriptos.get(1).name}"></h2>
-                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(1).getNetwork()}"></h5>
-
-                            <p class="card-text" th:text="${listaCriptos.get(1).getDescription()}">
-                            </p>
-                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(1).getPrice()}+${' (BUSD)'}"></h2>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
-                            <a href="#!">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title" th:text="${listaCriptos.get(2).name}"></h2>
-                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(2).getNetwork()}"></h5>
-
-                            <p class="card-text" th:text="${listaCriptos.get(2).getDescription()}">
-                            </p>
-                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(2).getPrice()}+${' (BUSD)'}"></h2>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
-                            <a href="#!">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title" th:text="${listaCriptos.get(3).name}"></h2>
-                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(3).getNetwork()}"></h5>
-
-                            <p class="card-text" th:text="${listaCriptos.get(3).getDescription()}">
-                            </p>
-                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(3).getPrice()}+${' (BUSD)'}"></h2>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
-                            <a href="#!">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title" th:text="${listaCriptos.get(4).name}"></h2>
-                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(4).getNetwork()}"></h5>
-
-                            <p class="card-text" th:text="${listaCriptos.get(4).getDescription()}">
-                            </p>
-                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(4).getPrice()}+${' (BUSD)'}"></h2>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
-                            <a href="#!">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title" th:text="${listaCriptos.get(5).name}"></h2>
-                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(5).getNetwork()}"></h5>
-
-                            <p class="card-text" th:text="${listaCriptos.get(5).getDescription()}">
-                            </p>
-                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(5).getPrice()}+${' (BUSD)'}"></h2>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
-                            <a href="#!">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title" th:text="${listaCriptos.get(6).name}"></h2>
-                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(6).getNetwork()}"></h5>
-
-                            <p class="card-text" th:text="${listaCriptos.get(6).getDescription()}">
-                            </p>
-                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(6).getPrice()}+${' (BUSD)'}"></h2>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
-                            <a href="#!">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title" th:text="${listaCriptos.get(7).name}"></h2>
-                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(7).getNetwork()}"></h5>
-
-                            <p class="card-text" th:text="${listaCriptos.get(7).getDescription()}">
-                            </p>
-                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(7).getPrice()}+${' (BUSD)'}"></h2>
-
+                            <h5 class="card-title" th:text="${moneda.getName()}"></h5>
+                            <p class="card-text" th:text="${'Red: '}+${moneda.getNetwork()}" ></p>
+                            <p class="card-text" th:text="${moneda.getDescription()}" ></p>
+                            <p class="text-success h3" th:text="${moneda.getPrice()}+${ ' (BUSD)'}"></p>
                         </div>
                     </div>
                 </div>
 
 
             </div>
+
 
         </section>
         <!--Section: Content-->

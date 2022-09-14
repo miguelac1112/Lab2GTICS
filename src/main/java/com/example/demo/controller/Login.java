@@ -32,12 +32,13 @@ public class Login {
         }else{
             User user = usuario.get(0);
             model.addAttribute("usuario", user);
-            return "redirect:/principal";
+            return "redirect:cripto/principal";
         }
     }
 
     @GetMapping(value="principal")
-    public String principal(){
+    public String principal(Model model, User user){
+        model.addAttribute("iduser", user.getId());
         return "cripto/principal";
     }
 

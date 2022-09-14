@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.Entity.User;
 import com.example.demo.Repository.*;
 import com.example.demo.Entity.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,13 @@ public class Cripto {
     public String principal(Model model){
         model.addAttribute("listaCriptos",currencyRepository.findAll());
         return "cripto/principal";
+    }
+
+    @GetMapping(value = "mywallet")
+    public String listar(Model model, @RequestParam("id") Integer id) {
+        List<Transaction> transactionbyuserList = transactionRepository.findTransactionByIduser(id);
+        model.addAttribute("transactionbyuserList", transactionbyuserList);
+        return "cripto/wallet";
     }
 
 }

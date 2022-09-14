@@ -15,7 +15,7 @@
   <title>Mis Wallets</title>
 </head>
 <body class="container-fluid mt-4">
-<h2 class="text-center mb-4">Mis Transacciones</h2>
+<h2 class="text-center mb-4">Mis Billetera</h2>
 <table class="table table-dark table-striped">
   <tr>
     <th class="text-center">TxID de Wallet</th>
@@ -23,11 +23,11 @@
     <th class="text-center">Precio de compra (BUSD)</th>
     <th class="text-center">Cantidad Comprada</th>
   </tr>
-  <tr th:each="" >
-    <td class="text-center" ></td>
-    <td class="text-center" ></td>
-    <td class="text-center" ></td>
-    <td class="text-center" ></td>
+  <tr th:each="transaction : ${transactionbyuserList}">
+    <td th:text="${transaction.txId}" ></td>
+    <td th:text="${transaction.currency}" ></td>
+    <td th:text="${transaction.networkFee}" ></td>
+    <td th:text="${transaction.amount}" ></td>
   </tr>
 </table>
 

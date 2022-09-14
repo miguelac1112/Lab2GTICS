@@ -10,7 +10,7 @@
         <main>
             <div class="container px-4 py-5 col-lg-4 offset-lg-4">
                 <h1 class="pb-2 mb-3 border-bottom">Nuevo Producto</h1>
-                <form method="post" th:action="@{'/cripto/save'}" class="mt-2">
+                <form method="post" th:action="@{/cripto/save}" class="mt-2">
                     <input th:value="${1}" name="user" type="hidden"/>
                     <div class="mb-3">
                         <label for="description" class="form-label">Descripción de la Tx</label>
@@ -18,7 +18,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="currency" class="form-label">Criptomoneda</label>
-                        <select id="currency" class="form-select" >
+                        <select id="currency" name="currency" class="form-select" >
                             <option value="Solana">Solana</option>
                             <option value="Bitcoin">Bitcoin</option>
                             <option value="Polkadot">Polkadot</option>
@@ -54,7 +54,7 @@
                         <select id="wallet" class="form-select" name="wallet">
                             <option th:each="wallet : ${listaBilleteras}"
                                     th:text="${wallet.address}"
-                                    th:text="${wallet.id}"
+                                    th:value="${wallet.id}"
                                     ></option>
                         </select>
                     </div>

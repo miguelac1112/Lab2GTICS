@@ -25,18 +25,18 @@
     <th class="text-center"># de bloque</th>
     <th class="text-center">Criptomoneda</th>
     <th class="text-center">Status</th>
-    <th class="text-center">Wallet</th>
+
 
   </tr>
-  <tr th:each="transaction : ${transactionList}" >
-    <td th:text="${transaction.id}" ></td>
-    <td th:text="${transaction.txId}" ></td>
-    <td th:text="${transaction.amount}" ></td>
-    <td th:text="${transaction.networkFee}" ></td>
-    <td th:text="${transaction.block}" ></td>
-    <td th:text="${transaction.currency}" ></td>
-    <td th:text="${transaction.status}" ></td>
-    <td th:text="${transaction.id}" ></td>
+  <tr th:each="transaction : ${transactonList}" >
+    <td th:text="${transaction.getId()}" ></td>
+    <td th:text="${transaction.getTxId()}" ></td>
+    <td th:text="${transaction.getAmount()}" ></td>
+    <td th:text="${transaction.getNeetworkFee()}" ></td>
+    <td th:text="${transaction.getBlock()}" ></td>
+    <td th:text="${transaction.getCurrency()}" ></td>
+    <td th:text="${transaction.getStatus()}" ></td>
+
   </tr>
 </table>
 

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.Entity.User;
 import com.example.demo.Repository.*;
 import com.example.demo.Entity.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,22 +60,22 @@ public class Cripto {
     @GetMapping(value = "mywallet")
     public String listar(Model model, @RequestParam("id") Integer id) {
         List<Transaction> transactionbyuserList = transactionRepository.findTransactionByIduser(id);
+
         model.addAttribute("transactionbyuserList", transactionbyuserList);
         return "cripto/wallet";
     }
 
     @PostMapping("/buscaCripto")
-    public String buscaCripto(@RequestParam("numeroTxID") String numeroTxID,Model model) {
-
-
-
-
+    public String buscaCripto(@RequestParam("numeroTxID") String numeroTxID,Model model,Model model1) {
 
         List<Transaction> listaEncontrada=transactionRepository.buscarTransaction(numeroTxID);
 
 
 
         model.addAttribute("listaEncontrada", listaEncontrada);
+
+
+
         return "cripto/EncuentraTxID";
     }
 

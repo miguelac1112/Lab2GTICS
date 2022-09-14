@@ -13,22 +13,22 @@ public class Transaction {
     @Column(name = "description", length = 45)
     private String description;
 
-    @Column(name = "tx_id", nullable = false, length = 80)
+    @Column(name = "tx_id", length = 80)
     private String txId;
 
-    @Column(name = "amount", nullable = false)
+    @Column(name = "amount")
     private Double amount;
 
-    @Column(name = "neetwork_fee", nullable = false)
+    @Column(name = "neetwork_fee")
     private Double neetworkFee;
 
-    @Column(name = "block", nullable = false)
+    @Column(name = "block")
     private Integer block;
 
-    @Column(name = "status", nullable = false, length = 45)
+    @Column(name = "status",  length = 45)
     private String status;
 
-    @Column(name = "currency", nullable = false, length = 45)
+    @Column(name = "currency",  length = 45)
     private String currency;
 
     @ManyToOne

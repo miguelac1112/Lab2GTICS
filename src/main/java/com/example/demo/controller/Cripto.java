@@ -37,15 +37,16 @@ public class Cripto {
     }
 
     @GetMapping("/new")
-    public String nuevaTransaccion(Model model, @RequestParam("id") int id_usuario) {
+    public String nuevaTransaccion(Model model) {
         model.addAttribute("listaDivisas", currencyRepository.findAll());
         model.addAttribute("listaBilleteras", walletRepository.findAll());
-        model.addAttribute("id_usuario", id_usuario);
+
         return "cripto/newFrm";
     }
 
     @PostMapping("/save")
     public String guardarTransaccion(Transaction transaction, RedirectAttributes attr) {
+        System.out.println(transaction.getCurrency());
         transactionRepository.save(transaction);
         return "redirect:/cripto/principal";
     }

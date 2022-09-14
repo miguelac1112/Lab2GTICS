@@ -11,7 +11,7 @@
             <div class="container px-4 py-5 col-lg-4 offset-lg-4">
                 <h1 class="pb-2 mb-3 border-bottom">Nuevo Producto</h1>
                 <form method="post" th:action="@{'/cripto/save'}" class="mt-2">
-                    <input th:value="${id_usuario}" name="user" type="hidden"/>
+                    <input th:value="${1}" name="user" type="hidden"/>
                     <div class="mb-3">
                         <label for="description" class="form-label">Descripción de la Tx</label>
                         <input type="text" class="form-control" name="description" id="description">
@@ -19,9 +19,14 @@
                     <div class="mb-3">
                         <label for="currency" class="form-label">Criptomoneda</label>
                         <select id="currency" class="form-select" >
-                            <option th:each="currency : ${listaDivisas}"
-                                    th:text="${currency.name}"
-                                    th:value="${currency.name}"></option>
+                            <option value="Solana">Solana</option>
+                            <option value="Bitcoin">Bitcoin</option>
+                            <option value="Polkadot">Polkadot</option>
+                            <option value="PancakeSwap">PancakeSwap</option>
+                            <option value="Matic">Matic</option>
+                            <option value="Axie Infinity">Axie Infinity</option>
+                            <option value="BNB">BNB</option>
+                            <option value="Cardano">Cardano</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -30,11 +35,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="amount" class="form-label">Cantidad</label>
-                        <input type="text" class="form-control" name="amount" id="amount">
+                        <input type="number" class="form-control" name="amount" id="amount">
                     </div>
                     <div class="mb-3">
                         <label for="neetworkFee" class="form-label">Comisión</label>
-                        <input type="text" class="form-control" name="neetworkFee" id="neetworkFee">
+                        <input type="number" class="form-control" name="neetworkFee" id="neetworkFee">
                     </div>
                     <div class="mb-3">
                         <label for="block" class="form-label"># Bloque</label>
@@ -42,17 +47,18 @@
                     </div>
                     <div class="mb-3">
                         <label for="status" class="form-label">Estado</label>
-                        <input type="number" class="form-control" name="status" id="status">
+                        <input type="text" class="form-control" name="status" id="status">
                     </div>
                     <div class="mb-3">
                         <label for="wallet" class="form-label">Billetera</label>
                         <select id="wallet" class="form-select" name="wallet">
                             <option th:each="wallet : ${listaBilleteras}"
                                     th:text="${wallet.address}"
-                                    th:value="${wallet.id}"></option>
+                                    th:text="${wallet.id}"
+                                    ></option>
                         </select>
                     </div>
-                    <a th:href="@{'/product'}" class="btn btn-danger">Cancelar</a>
+                    <a th:href="@{'/login/inicioSesion'}" class="btn btn-danger">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Registrar</button>
                 </form>
             </div>

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -23,7 +24,8 @@ public class Login {
 
     @PostMapping(value="login/inicioSesion")
     public String validaLogin(@RequestParam("email") String email,
-                              @RequestParam("password") String password, Model model){
+                              @RequestParam("password") String password, Model model,
+                              RedirectAttributes attr){
         System.out.println(email);
         System.out.println(password);
         List<User> usuario = userRepository.validarCorreoContrasena(email, password);
@@ -31,7 +33,9 @@ public class Login {
             return "redirect:/login";
         }else{
             User user = usuario.get(0);
-            model.addAttribute("iduser", user.getId());
+            model.addAttribute("usuario", user);
+            attr.addFlashAttribute("idusuario",user.getId());
+
             return "redirect:/cripto/principal";
         }
     }

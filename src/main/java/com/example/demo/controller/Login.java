@@ -32,7 +32,7 @@ public class Login {
         }else{
             User user = usuario.get(0);
             model.addAttribute("usuario", user);
-            return "redirect:cripto/principal";
+            return "redirect:/cripto/principal";
         }
     }
 

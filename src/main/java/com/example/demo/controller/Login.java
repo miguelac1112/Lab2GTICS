@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.Repository.UserRepository;
-import com.example.demo.entity.User;
+import com.example.demo.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,14 +28,12 @@ public class Login {
         System.out.println(password);
         List<User> usuario = userRepository.validarCorreoContrasena(email, password);
         System.out.println(usuario.get(0).getId());
-        try{
-            if(usuario.get(0).getId() != 0){
-                User user = usuario.get(0);
-                model.addAttribute("usuario", user);
-                return "cripto/principal";
-            }
-        }catch (IndexOutOfBoundsException exception){
-            return "redirect:/login/inicio2";
+        if (usuario.isEmpty()){
+            return "login/inicio2";
+        }else{
+            User user = usuario.get(0);
+            model.addAttribute("usuario", user);
+            return "cripto/principal";
         }
     }
 

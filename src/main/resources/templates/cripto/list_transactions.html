@@ -28,15 +28,15 @@
     <th class="text-center">Wallet</th>
 
   </tr>
-  <tr th:each="" >
-    <td class="text-center" ></td>
-    <td class="text-center" ></td>
-    <td class="text-center" ></td>
-    <td class="text-center" ></td>
-    <td class="text-center" ></td>
-    <td class="text-center" ></td>
-    <td class="text-center" ></td>
-    <td class="text-center" ></td>
+  <tr th:each="transaction : ${transactionList}" >
+    <td th:text="${transaction.id}" ></td>
+    <td th:text="${transaction.txId}" ></td>
+    <td th:text="${transaction.amount}" ></td>
+    <td th:text="${transaction.networkFee}" ></td>
+    <td th:text="${transaction.block}" ></td>
+    <td th:text="${transaction.currency}" ></td>
+    <td th:text="${transaction.status}" ></td>
+    <td th:text="${transaction.id}" ></td>
   </tr>
 </table>
 

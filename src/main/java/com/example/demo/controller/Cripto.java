@@ -57,4 +57,20 @@ public class Cripto {
         return "cripto/principal";
     }
 
+    @PostMapping("/buscaCripto")
+    public String buscaCripto(@RequestParam("numeroTxID") String numeroTxID,Model model) {
+
+
+
+
+
+        List<Transaction> listaEncontrada=transactionRepository.buscarTransaction(numeroTxID);
+
+
+
+        model.addAttribute("listaEncontrada", listaEncontrada);
+        return "cripto/EncuentraTxID";
+    }
+
+
 }

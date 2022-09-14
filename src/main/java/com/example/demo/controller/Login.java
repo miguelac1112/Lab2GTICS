@@ -18,4 +18,9 @@ public class Login {
         return "cripto/principal";
     }
 
+    @GetMapping(value="principal")
+    public String principal(){
+        return "cripto/principal";
+    }
+
 }

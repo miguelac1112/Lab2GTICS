@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class Cripto {
-    @GetMapping()
+  /*  @GetMapping()
     public String listar(){
         return "cripto/wallet";
     }
-
+*/
 }

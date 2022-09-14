@@ -50,4 +50,11 @@ public class Cripto {
         transactionRepository.save(transaction);
         return "redirect:/cripto/principal";
     }
+
+    @GetMapping(value="principal")
+    public String principal(Model model){
+        model.addAttribute("listaCriptos",currencyRepository.findAll());
+        return "cripto/principal";
+    }
+
 }

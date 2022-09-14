@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -81,12 +81,8 @@
 
     <!-- Jumbotron -->
     <div id="intro" class="p-5 text-center bg-light">
-        <h1 class="mb-3 h2">Learn Bootstrap 5 with MDB</h1>
-        <p class="mb-3">Best & free guide of responsive web design</p>
-        <a class="btn btn-primary m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow"
-           target="_blank">Start tutorial</a>
-        <a class="btn btn-primary m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank"
-           role="button">Download MDB UI KIT</a>
+        <h1 class="mb-3 h2">La forma más popular del mundo para comprar,vender e intercambiar criptomonedas</h1>
+        <img src="/img/coins.png" class="img-fluid" />
     </div>
     <!-- Jumbotron -->
 </header>
@@ -97,24 +93,25 @@
     <div class="container">
         <!--Section: Content-->
         <section class="text-center">
-            <h4 class="mb-5"><strong>Latest posts</strong></h4>
+            <h4 class="mb-5"><strong>Lista de Cripto</strong></h4>
 
             <div class="row">
                 <div class="col-lg-4 col-md-12 mb-4">
                     <div class="card">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
+                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
                             <a href="#!">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Post title</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the
-                                card's content.
+                            <h2 class="card-title" th:text="${listaCriptos.get(0).name}"></h2>
+                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(0).getNetwork()}"></h5>
+
+                            <p class="card-text" th:text="${listaCriptos.get(0).getDescription()}">
                             </p>
-                            <a href="#!" class="btn btn-primary">Read</a>
+                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(0).getPrice()}+${' (BUSD)'}"></h2>
+
                         </div>
                     </div>
                 </div>
@@ -122,18 +119,19 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" class="img-fluid" />
+                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
                             <a href="#!">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Post title</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the
-                                card's content.
+                            <h2 class="card-title" th:text="${listaCriptos.get(1).name}"></h2>
+                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(1).getNetwork()}"></h5>
+
+                            <p class="card-text" th:text="${listaCriptos.get(1).getDescription()}">
                             </p>
-                            <a href="#!" class="btn btn-primary">Read</a>
+                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(1).getPrice()}+${' (BUSD)'}"></h2>
+
                         </div>
                     </div>
                 </div>
@@ -141,18 +139,19 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" />
+                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
                             <a href="#!">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Post title</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the
-                                card's content.
+                            <h2 class="card-title" th:text="${listaCriptos.get(2).name}"></h2>
+                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(2).getNetwork()}"></h5>
+
+                            <p class="card-text" th:text="${listaCriptos.get(2).getDescription()}">
                             </p>
-                            <a href="#!" class="btn btn-primary">Read</a>
+                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(2).getPrice()}+${' (BUSD)'}"></h2>
+
                         </div>
                     </div>
                 </div>
@@ -162,18 +161,19 @@
                 <div class="col-lg-4 col-md-12 mb-4">
                     <div class="card">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://mdbootstrap.com/img/new/standard/nature/002.jpg" class="img-fluid" />
+                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
                             <a href="#!">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Post title</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the
-                                card's content.
+                            <h2 class="card-title" th:text="${listaCriptos.get(3).name}"></h2>
+                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(3).getNetwork()}"></h5>
+
+                            <p class="card-text" th:text="${listaCriptos.get(3).getDescription()}">
                             </p>
-                            <a href="#!" class="btn btn-primary">Read</a>
+                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(3).getPrice()}+${' (BUSD)'}"></h2>
+
                         </div>
                     </div>
                 </div>
@@ -181,18 +181,19 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://mdbootstrap.com/img/new/standard/nature/022.jpg" class="img-fluid" />
+                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
                             <a href="#!">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Post title</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the
-                                card's content.
+                            <h2 class="card-title" th:text="${listaCriptos.get(4).name}"></h2>
+                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(4).getNetwork()}"></h5>
+
+                            <p class="card-text" th:text="${listaCriptos.get(4).getDescription()}">
                             </p>
-                            <a href="#!" class="btn btn-primary">Read</a>
+                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(4).getPrice()}+${' (BUSD)'}"></h2>
+
                         </div>
                     </div>
                 </div>
@@ -200,83 +201,89 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://mdbootstrap.com/img/new/standard/nature/035.jpg" class="img-fluid" />
+                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
                             <a href="#!">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Post title</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the
-                                card's content.
+                            <h2 class="card-title" th:text="${listaCriptos.get(5).name}"></h2>
+                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(5).getNetwork()}"></h5>
+
+                            <p class="card-text" th:text="${listaCriptos.get(5).getDescription()}">
                             </p>
-                            <a href="#!" class="btn btn-primary">Read</a>
+                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(5).getPrice()}+${' (BUSD)'}"></h2>
+
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title" th:text="${listaCriptos.get(6).name}"></h2>
+                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(6).getNetwork()}"></h5>
+
+                            <p class="card-text" th:text="${listaCriptos.get(6).getDescription()}">
+                            </p>
+                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(6).getPrice()}+${' (BUSD)'}"></h2>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="https://images.ctfassets.net/q33z48p65a6w/2fi3pKDcUs07RnA0XXwh8S/7a4259eabc9f8d52eef29e4a47a76104/2202_Crypto_BlogHeader_Types_of_cryptoccurency.png?w=1200&h=645&fit=thumb" class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title" th:text="${listaCriptos.get(7).name}"></h2>
+                            <h5 class="card-title" th:text="${'Red: '}+${listaCriptos.get(7).getNetwork()}"></h5>
+
+                            <p class="card-text" th:text="${listaCriptos.get(7).getDescription()}">
+                            </p>
+                            <h2 class="card-title" style="color: green" th:text="${listaCriptos.get(7).getPrice()}+${' (BUSD)'}"></h2>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
         </section>
         <!--Section: Content-->
 
         <!-- Pagination -->
-        <nav class="my-4" aria-label="...">
-            <ul class="pagination pagination-circle justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
+
     </div>
 </main>
 <!--Main layout-->
 
 <!--Footer-->
 <footer class="bg-light text-lg-start">
-    <div class="py-4 text-center">
-        <a role="button" class="btn btn-primary btn-lg m-2"
-           href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow" target="_blank">
-            Learn Bootstrap 5
-        </a>
-        <a role="button" class="btn btn-primary btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank">
-            Download MDB UI KIT
-        </a>
-    </div>
+
 
     <hr class="m-0" />
 
-    <div class="text-center py-4 align-items-center">
-        <p>Follow MDB on social media</p>
-        <a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" class="btn btn-primary m-1" role="button"
-           rel="nofollow" target="_blank">
-            <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://www.facebook.com/mdbootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
-           target="_blank">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://twitter.com/MDBootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
-           target="_blank">
-            <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://github.com/mdbootstrap/mdb-ui-kit" class="btn btn-primary m-1" role="button" rel="nofollow"
-           target="_blank">
-            <i class="fab fa-github"></i>
-        </a>
-    </div>
+
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        © 2022-2 Copyright:
+        <a class="text-dark" href="https://google.com/">Lab2-Gtics</a>
     </div>
     <!-- Copyright -->
 </footer>

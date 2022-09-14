@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>TeleCripto</title>
 </head>
 <body>
 
@@ -51,11 +51,14 @@
             </div>
 
             <div class="col-5 mt-5">
+                <form method="post" th:action="@{/cripto/buscaCripto}">
                 <input name="numeroTxID" class="form-control me-2 " type="search" placeholder="Buscar transacciones por TxID" aria-label="Search">
+                    <button type="submit" class="btn btn-success">Buscar</button>
+                </form>
             </div>
             <div class="col-2 mt-5">
-                <button type="submit" class="btn btn-success">Buscar</button>
             </div>
+
             <!--
             <div class=" col-4 mt-5">
                 <button type="button ml-3" class="btn btn-success">Inicio sesión</button>

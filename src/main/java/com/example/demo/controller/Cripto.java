@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.Entity.User;
 import com.example.demo.Repository.*;
 import com.example.demo.Entity.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +63,21 @@ public class Cripto {
         model.addAttribute("transactionbyuserList", transactionbyuserList);
         return "cripto/wallet";
     }
+
+    @PostMapping("/buscaCripto")
+    public String buscaCripto(@RequestParam("numeroTxID") String numeroTxID,Model model) {
+
+
+
+
+
+        List<Transaction> listaEncontrada=transactionRepository.buscarTransaction(numeroTxID);
+
+
+
+        model.addAttribute("listaEncontrada", listaEncontrada);
+        return "cripto/EncuentraTxID";
+    }
+
 
 }
